@@ -96,18 +96,7 @@ public class GameManager : MonoBehaviour
         public float cellTessilationAmount;
 
     };
-    [Serializable]
-    class CellData
-    {
-        public float[] loadCubeValue = new float[100];
-    }
-    [Serializable]
-    class ModuleData
-    {
-        public string[] sequenceName = new string[100];
-        public float[] firstRangeOfModuleEffect = new float[100];
-        public float[] secondRangeOfModuleEffect = new float[100];
-    }
+
     #endregion
 
     #region generators
@@ -685,4 +674,15 @@ public class GameManager : MonoBehaviour
         return null;
     }
 }
-
+[Serializable]
+class CellData
+{
+    public float[] loadCubeValue = new float[100];
+}
+[Serializable]
+class ModuleData
+{
+    public string[] sequenceName = new string[100];
+    public float[] firstRangeOfModuleEffect = new float[100];
+    public float[] secondRangeOfModuleEffect = new float[100];
+}
