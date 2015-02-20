@@ -247,63 +247,9 @@ public class GameManager : MonoBehaviour
 
     private GameObject CellGenerator(string name, Vector3 cellPos, int numberToGen, float size, float frequencey)
     {
-        //The Holder of all the cells
-        if (!cellHolderCreated)
-        {
-            cellHolder = new GameObject();
-            cellHolder.name = "Cell Holder";
-            cellHolderCreated = !cellHolderCreated;
-        }
-        //Generate the head of cell to attach other objects to.
-        GameObject headOfCell = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        transform.position = new Vector3(0, 0, 3);
-
-        headOfCell.transform.localScale = sizeOfGenSphere;
-        headOfCell.AddComponent<CellScript>();
-        headOfCell.transform.parent = cellHolder.transform;
-        headOfCell.name = name + " " + numberOfCurrentCell;
-        numberOfCurrentCell++;
-        headOfCell.transform.position = cellPos;
-        headOfCell.transform.localScale = new Vector3(size, size, size);
-        RandomColor(headOfCell, 0, 0, 0, 0, 0, 0,
-                                0.9f, 0.9f, 0.5f, 0.5f, 0.5f, 0.5f);
-        headOfCell.AddComponent<Rigidbody>();
-        headOfCell.rigidbody.useGravity = false;
-        headOfCell.transform.rotation = UnityEngine.Random.rotation;
-
-        if (numberToGen > 1)
-        {
-
-            GameObject lastCellToAttachTo;
-            lastCellToAttachTo = headOfCell;
-
-            for (int i = 0; i < numberToGen; i++)
-            {
-                GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                sphere.transform.parent = headOfCell.transform;
-
-                sphere.name = name + " " + numberOfCurrentCell;
-                numberOfCurrentCell++;
-                sphere.AddComponent<HingeJoint>();
-//Frequency values: 0.02f calm
-                sphere.transform.position = new Vector3(lastCellToAttachTo.transform.position.x + size * frequencey,
-                                                        lastCellToAttachTo.transform.position.y + size * frequencey,
-                                                        lastCellToAttachTo.transform.position.z + size * frequencey);
-                sphere.transform.localScale = new Vector3(size, size, size);
-                sphere.rigidbody.useGravity = false;
-                sphere.rigidbody.hingeJoint.connectedBody = lastCellToAttachTo.rigidbody;
-                lastCellToAttachTo = sphere;
-
-                RandomColor(sphere, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f,
-                                    0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
-            }
-        }
-        else
-        {
-            headOfCell.renderer.material.shader = tessilationShader;
-        }
-        discLabel.text = numberOfCurrentCell.ToString() + " Cells in scene";
-        return headOfCell;
+//Super secret cell Gen code, please ask me if you would like to see it. 
+//Using object pooling and generating primative game obeccts.
+//Future of the game will be mesh generated geo spheres. 
     }
     #endregion
 
